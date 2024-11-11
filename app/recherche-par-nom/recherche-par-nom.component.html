@@ -1,0 +1,54 @@
+<div class="container">
+
+    <!--  <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 "> <label>Nom Vetement  </label> <input type="text" class="form-control"
+                [(ngModel)]="nomVetement" name="nomVetement" class="form-control"> <button type="submit"
+                (click)="rechercherVets()" class="btn btn-primary mb-2 ml-2">Rechercher</button> </div>
+    </form>
+ -->
+    
+   <!--  <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 "> <label>Nom Vetement en tapant</label> <input class="form-control"
+                #searchTerm (keyup)="onKeyUp(searchTerm.value)"> </div>
+    </form>  -->
+
+   <div class="container">
+        <form class="form-inline">
+          <div class="form-group mx-sm-3 mb-2 mt-2">
+            <label>Nom Vetement en tapant</label>
+            <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control">
+          </div>
+        </form>
+       
+        <div class="card shadow mb-4">
+          <div class="card-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Nom</th>
+                  <th>Prix</th>
+                  <th>Date Création</th>
+                  <th>Couleur</th>
+                  <th>Taille</th>
+                  <th>Genre</th>
+                </tr>
+              </thead>
+               <tbody *ngFor="let vetement of vetements | searchFilter: searchTerm"> 
+          
+                <tr>
+                  <td>{{vetement.idVetement}}</td>
+                  <td>{{vetement.nomVetement}}</td>
+                  <td>{{vetement.prix}}</td>
+                  <td>{{vetement.dateCreation | date: 'dd/MM/yyyy'}}</td>
+                  <td>{{vetement.couleur}}</td>
+                  <td>{{vetement.taille}}</td>
+                  <td>{{vetement.genre?.nomGenre}}</td>
+                 
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      

@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="card shadow mb-4">
+    <div class="card-body">
+    <table class="table table-striped">
+    <tr> <th>Id</th><th>Nom</th> <th>Prix</th> <th>Date Création</th><th>couleur</th><th>taille</th><th>genre</th><th>Image</th></tr>
+    <tbody *ngFor="let vetement of vetements">
+    <tr >
+    <td>{{vetement.idVetement}}</td>
+    <td>{{vetement.nomVetement}}</td>
+    <td>{{vetement.prix}}</td>
+    <td>{{vetement.dateCreation | date:'dd/MM/yyyy'}}</td>
+    <td>{{vetement.couleur}}</td>
+    <td>{{vetement.taille}}</td>
+    <td>{{vetement.genre?.nomGenre}}</td>
+    <td><img class="card-img-top img-responsive"
+      src="{{apiURL+'/image/loadfromFS/'+vetement.idVetement}}"
+      style = "height :50px;width:100px">
+      </td>
+      
+     
+
+    
+    
+
+ <td><a  *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerVetement(vetement)">Supprimer</a></td>
+    <td><a *ngIf="authService.isAdmin()"  class="btn btn-success" [routerLink]="['/updateVetement',vetement.idVetement]">Modifier</a></td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
